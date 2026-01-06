@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:studio_projects/controller/product.dart';
 
-class ProductLIst extends StatelessWidget {
+class ProductLIst extends StatefulWidget {
   const ProductLIst({super.key});
+
+  @override
+  State<ProductLIst> createState() => _ProductLIstState();
+}
+
+class _ProductLIstState extends State<ProductLIst> {
+  List data = [];
+
+  fetchdata() async {
+    data = await productservice().getdata();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    fetchdata();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +28,7 @@ class ProductLIst extends StatelessWidget {
       appBar: AppBar(title: Text("Product list with api and getx")),
 
       body: ListView.builder(
-        itemCount: 5,
+        itemCount: data.length,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
@@ -35,10 +54,20 @@ class ProductLIst extends StatelessWidget {
                       spacing: 10,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Product name"),
-                        Text("Category"),
+                        Text("${data[index]['title']}"),
+                        Text("${data[index]['category']}"),
                         Row(
-                          children: [Text("Sale Price"), Text("Reguler price")],
+                          spacing: 20,
+                          children: [
+                            Text("${data[index]['price']}"),
+                            Text(
+                              "${data[index]['old_price']}",
+                              style: TextStyle(
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
