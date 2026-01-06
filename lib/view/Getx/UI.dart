@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:studio_projects/view/Getx/controller.dart';
@@ -9,6 +11,7 @@ class getX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log("+=======Started .........==========");
     return Scaffold(
       appBar: AppBar(title: Text("Counter")),
       body: Column(
@@ -30,7 +33,7 @@ class getX extends StatelessWidget {
 
             children: [
               Text(
-                "1",
+                "${cc.counter}",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -43,11 +46,15 @@ class getX extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  cc.decrement();
+                },
                 child: Icon(Icons.remove, color: Colors.red, size: 30),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  cc.increment();
+                },
                 child: Icon(Icons.add, color: Colors.green, size: 30),
               ),
             ],
