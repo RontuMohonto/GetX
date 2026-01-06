@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:studio_projects/view/Counter/UI.dart';
+import 'package:studio_projects/view/Counter/counter/UI.dart';
 import 'package:studio_projects/view/Getx/UI.dart';
 import 'package:studio_projects/view/ProductList/UI.dart';
 import 'package:studio_projects/view/ProductList/with_getx.dart';
