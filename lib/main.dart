@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:studio_projects/view/Counter/UI.dart';
 import 'package:studio_projects/view/Getx/UI.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,
+    return GetMaterialApp(debugShowCheckedModeBanner: false,
     home: getX(),
     );
 

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:studio_projects/view/Getx/controller.dart';
 
 class getX extends StatelessWidget {
-  const getX({super.key});
+  getX({super.key});
+
+  final controllerGetx cc = Get.put(controllerGetx());
 
   @override
   Widget build(BuildContext context) {
