@@ -19,8 +19,9 @@ class ProductLIst extends StatelessWidget {
                 spacing: 10,
                 children: [
                   Expanded(
+                    flex: 3,
                     child: Container(
-                      height: 100,
+                      height: 130,
                       width: 150,
                       decoration: BoxDecoration(
                         color: Colors.red,
@@ -29,13 +30,16 @@ class ProductLIst extends StatelessWidget {
                     ),
                   ),
                   Expanded(
+                    flex: 4,
                     child: Column(
+                      spacing: 10,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Product name"),
                         Text("Category"),
-                        Text("Sale Price"),
-                        Text("Reguler price"),
+                        Row(
+                          children: [Text("Sale Price"), Text("Reguler price")],
+                        ),
                       ],
                     ),
                   ),
