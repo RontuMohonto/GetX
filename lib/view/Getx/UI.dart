@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:studio_projects/view/Getx/controller.dart';
+import 'package:studio_projects/controller/controller.dart';
 
 class getX extends StatelessWidget {
   getX({super.key});
