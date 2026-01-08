@@ -1,11 +1,12 @@
 import 'dart:developer';
-import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
-import 'package:dada_garments_full_with_api/screen/home/UI.dart';
 import 'package:flutter/material.dart';
-import '../../../controller/auth/loginController.dart';
-import '../../../controller/login_Phone_widgets/password_field.dart';
-import '../../../controller/login_Phone_widgets/phonefield.dart';
-import '../../../controller/widgets/text.dart';
+
+import '../../../../Dada_controller/auth/loginController.dart';
+import '../../../../Dada_controller/login_Phone_widgets/password_field.dart';
+import '../../../../Dada_controller/login_Phone_widgets/phonefield.dart';
+import '../../../../Dada_controller/widgets/custom_button.dart';
+import '../../../../Dada_controller/widgets/text.dart';
+import '../../home/UI.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -77,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                 color: Colors.green.shade900,
                 fontWeight: FontWeight.w600,
               ),
-//password con
+              //password con
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
