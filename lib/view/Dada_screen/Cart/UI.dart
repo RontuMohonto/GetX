@@ -1,11 +1,11 @@
 import 'dart:developer';
 
-import 'package:dada_garments_full_with_api/controller/Cart/controller.dart';
-import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
-import 'package:dada_garments_full_with_api/screen/checkout/UI.dart';
 import 'package:flutter/material.dart';
 
-import '../../controller/widgets/text.dart';
+import '../../../Dada_controller/Cart/controller.dart';
+import '../../../Dada_controller/widgets/custom_button.dart';
+import '../../../Dada_controller/widgets/text.dart';
+import '../checkout/UI.dart';
 
 class Cart extends StatefulWidget {
   const Cart({super.key});
