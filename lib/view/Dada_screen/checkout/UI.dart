@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../../controller/Checkout/CheckOut_Controller.dart';
-import '../../controller/widgets/text.dart';
+import '../../../Dada_controller/Checkout/CheckOut_Controller.dart';
+import '../../../Dada_controller/widgets/custom_button.dart';
+import '../../../Dada_controller/widgets/text.dart';
 import '../Shipping_info/UI.dart';
 import '../home/UI.dart';
 
