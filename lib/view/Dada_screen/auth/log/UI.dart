@@ -6,14 +6,20 @@ import '../../../../Dada_controller/login_Phone_widgets/password_field.dart';
 import '../../../../Dada_controller/login_Phone_widgets/phonefield.dart';
 import '../../../../Dada_controller/widgets/custom_button.dart';
 import '../../../../Dada_controller/widgets/text.dart';
-import '../../../../controller/Test/LoginController.dart';
 import '../../home/UI.dart';
-import 'package:get/get.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
-  final LoginFunctionController lc = Get.put(LoginFunctionController());
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController PasswordController = TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +31,7 @@ class LoginPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(18),
         ),
         child: Form(
-          key: lc.formKey,
+          key: _formKey,
           child: Column(
             spacing: 15,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +67,7 @@ class LoginPage extends StatelessWidget {
                   border: Border.all(color: Colors.green.shade200),
                 ),
                 child: Login_phone_field(
-                  phoneNumberController: lc.phoneNumberController,
+                  phoneNumberController: phoneNumberController,
                 ),
               ),
 
@@ -80,7 +86,7 @@ class LoginPage extends StatelessWidget {
                   border: Border.all(color: Colors.green.shade200),
                 ),
                 child: login_password_form(
-                  PasswordController: lc.PasswordController,
+                  PasswordController: PasswordController,
                   validator: (value) {},
                   title: "Please enter your password",
                 ),
@@ -89,7 +95,7 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 15),
 
               // Logbutton
-              lc.isLoading
+              isLoading
                   ? Center(
                       child: CircularProgressIndicator(
                         color: Colors.green.shade700,
@@ -97,7 +103,27 @@ class LoginPage extends StatelessWidget {
                     )
                   : CustomButton_widget(
                       title: "Login",
-                      onTap: lc.loginFunction,
+                      onTap: () async {
+                        isLoading = true;
+                        setState(() {});
+
+                        var status = await LoginController.login(
+                          phone: phoneNumberController.text,
+                          password: PasswordController.text,
+                        );
+
+                        isLoading = false;
+                        setState(() {});
+
+                        if (status == true) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => home(),
+                            ), //Navigate to homepage
+                          );
+                        }
+                      },
                     ),
             ],
           ),

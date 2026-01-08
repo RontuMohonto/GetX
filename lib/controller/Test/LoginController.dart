@@ -16,18 +16,16 @@ class LoginFunctionController extends GetxController {
   loginFunction() async {
     isLoading = true;
     update();
-    log("========================");
-
     var status = await LoginController.login(
       phone: phoneNumberController.text,
       password: PasswordController.text,
     );
 
     log("=============111111111111111");
-    await Future.delayed(Duration(seconds: 4));
-    log("=============22222222222222");
 
     isLoading = false;
+    log("=============22222222222222");
+
     update();
 
     // if (status == true) {
