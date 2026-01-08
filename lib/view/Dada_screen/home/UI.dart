@@ -4,7 +4,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:flutter/material.dart';
 
-
 import '../../../Dada_controller/Selling_items/selling_items.dart';
 import '../../../Dada_controller/category/categoryController.dart';
 import '../../../Dada_controller/slider/slider.dart';
@@ -389,8 +388,7 @@ class _homeState extends State<home> {
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-
-          Navigator.push(context, MaterialPageRoute(builder: (_)=> Cart()));
+          Navigator.push(context, MaterialPageRoute(builder: (_) => Cart()));
         },
         elevation: 6,
         backgroundColor: Colors.transparent,
@@ -405,7 +403,11 @@ class _homeState extends State<home> {
               colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
             ),
           ),
-          child: const Icon(Icons.shopping_cart_outlined, color: Colors.white, size: 28),
+          child: const Icon(
+            Icons.shopping_cart_outlined,
+            color: Colors.white,
+            size: 28,
+          ),
         ),
       ),
     );
