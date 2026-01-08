@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:studio_projects/view/Counter/counter/GetX_controller.dart';
+
+import '../Counter/counter/GetX_controller.dart';
 
 class getX extends StatelessWidget {
   getX({super.key});

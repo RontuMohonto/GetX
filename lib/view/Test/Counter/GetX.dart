@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:studio_projects/controller/API_product.dart';
+import 'package:studio_projects/controller/Test/API_product.dart';
 
 class ProductsGetXController extends GetxController {
   RxList data = [].obs;
