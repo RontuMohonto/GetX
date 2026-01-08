@@ -1,16 +1,18 @@
 import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
-import 'package:dada_garments_full_with_api/screen/Cart/UI.dart';
-import 'package:dada_garments_full_with_api/screen/ProductScreen/UI.dart';
-import 'package:dada_garments_full_with_api/screen/ProductScreen/Widgets/Product_Card_widget.dart';
+
 import 'package:flutter/material.dart';
 
-import '../../controller/Selling_items/selling_items.dart';
-import '../../controller/category/categoryController.dart';
-import '../../controller/slider/slider.dart';
+
+import '../../../Dada_controller/Selling_items/selling_items.dart';
+import '../../../Dada_controller/category/categoryController.dart';
+import '../../../Dada_controller/slider/slider.dart';
+import '../../../Dada_controller/widgets/text.dart';
+import '../Cart/UI.dart';
 import '../Order/UI.dart';
+import '../ProductScreen/UI.dart';
+import '../ProductScreen/Widgets/Product_Card_widget.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
