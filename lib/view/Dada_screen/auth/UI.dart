@@ -68,6 +68,7 @@ class AuthScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              Obx(() => ac.selected.value == 1 ? LoginPage() : RegPage()),
             ],
           ),
         ),
