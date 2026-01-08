@@ -1,10 +1,12 @@
 import 'dart:developer';
 
-import 'package:dada_garments_full_with_api/controller/OrderList/Controller.dart';
-import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
+
 import 'package:flutter/material.dart';
 
-import '../../controller/widgets/text.dart';
+import '../../../Dada_controller/OrderList/Controller.dart';
+import '../../../Dada_controller/widgets/custom_button.dart';
+import '../../../Dada_controller/widgets/text.dart';
+
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
