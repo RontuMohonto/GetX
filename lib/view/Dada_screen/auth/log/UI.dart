@@ -6,20 +6,14 @@ import '../../../../Dada_controller/login_Phone_widgets/password_field.dart';
 import '../../../../Dada_controller/login_Phone_widgets/phonefield.dart';
 import '../../../../Dada_controller/widgets/custom_button.dart';
 import '../../../../Dada_controller/widgets/text.dart';
+import '../../../../controller/Test/LoginController.dart';
 import '../../home/UI.dart';
+import 'package:get/get.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController phoneNumberController = TextEditingController();
-  final TextEditingController PasswordController = TextEditingController();
-  bool isLoading = false;
+  final LoginFunctionController lc = Get.put(LoginFunctionController());
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(18),
         ),
         child: Form(
-          key: _formKey,
+          key: lc.formKey,
           child: Column(
             spacing: 15,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                   border: Border.all(color: Colors.green.shade200),
                 ),
                 child: Login_phone_field(
-                  phoneNumberController: phoneNumberController,
+                  phoneNumberController: lc.phoneNumberController,
                 ),
               ),
 
@@ -86,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                   border: Border.all(color: Colors.green.shade200),
                 ),
                 child: login_password_form(
-                  PasswordController: PasswordController,
+                  PasswordController: lc.PasswordController,
                   validator: (value) {},
                   title: "Please enter your password",
                 ),
@@ -95,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 15),
 
               // Logbutton
-              isLoading
+              lc.isLoading
                   ? Center(
                       child: CircularProgressIndicator(
                         color: Colors.green.shade700,
@@ -104,16 +98,14 @@ class _LoginPageState extends State<LoginPage> {
                   : CustomButton_widget(
                       title: "Login",
                       onTap: () async {
-                        isLoading = true;
-                        setState(() {});
+                        lc.isLoading = true;
 
                         var status = await LoginController.login(
-                          phone: phoneNumberController.text,
-                          password: PasswordController.text,
+                          phone: lc.phoneNumberController.text,
+                          password: lc.PasswordController.text,
                         );
 
-                        isLoading = false;
-                        setState(() {});
+                        lc.isLoading = false;
 
                         if (status == true) {
                           Navigator.pushReplacement(
