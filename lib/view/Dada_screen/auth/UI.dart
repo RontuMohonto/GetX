@@ -9,14 +9,9 @@ import 'package:studio_projects/view/Dada_screen/auth/reg/RegSc.dart';
 import '../../../Dada_controller/widgets/tabbar.dart';
 import 'log/UI.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+class AuthScreen extends StatelessWidget {
+  AuthScreen({super.key});
 
-  @override
-  State<AuthScreen> createState() => _AuthScreenState();
-}
-
-class _AuthScreenState extends State<AuthScreen> {
   final authController ac = Get.put(authController());
 
   @override
@@ -50,28 +45,29 @@ class _AuthScreenState extends State<AuthScreen> {
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  TabbarWidget(
-                    index: 2,
-                    selected: ac.selected.value,
-                    title: 'Sign up',
-                    onTap: () {
-                      ac.selected.value = 2;
-                    },
-                  ),
+              Obx(
+                () => Row(
+                  children: [
+                    TabbarWidget(
+                      index: 2,
+                      selected: ac.selected.value,
+                      title: 'Sign up',
+                      onTap: () {
+                        ac.selected.value = 2;
+                      },
+                    ),
 
-                  TabbarWidget(
-                    index: 1,
-                    selected: ac.selected.value,
-                    title: 'Sign in',
-                    onTap: () {
-                      ac.selected.value = 1;
-                    },
-                  ),
-                ],
+                    TabbarWidget(
+                      index: 1,
+                      selected: ac.selected.value,
+                      title: 'Sign in',
+                      onTap: () {
+                        ac.selected.value = 1;
+                      },
+                    ),
+                  ],
+                ),
               ),
-              ac.selected.value == 1 ? LoginPage() : RegPage(),
             ],
           ),
         ),
