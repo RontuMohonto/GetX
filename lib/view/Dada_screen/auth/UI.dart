@@ -52,18 +52,14 @@ class AuthScreen extends StatelessWidget {
                       index: 2,
                       selected: ac.selected.value,
                       title: 'Sign up',
-                      onTap: () {
-                        ac.selected.value = 2;
-                      },
+                      onTap: ac.signUpTab,
                     ),
 
                     TabbarWidget(
                       index: 1,
                       selected: ac.selected.value,
                       title: 'Sign in',
-                      onTap: () {
-                        ac.selected.value = 1;
-                      },
+                      onTap: ac.signInTab,
                     ),
                   ],
                 ),
