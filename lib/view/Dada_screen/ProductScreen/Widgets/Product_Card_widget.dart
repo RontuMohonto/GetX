@@ -1,9 +1,11 @@
 import 'dart:developer';
-import 'package:dada_garments_full_with_api/controller/add_to_cart/controller.dart';
-import 'package:dada_garments_full_with_api/controller/products/product_API.dart';
-import 'package:dada_garments_full_with_api/screen/Details_products/UI.dart';
+
 import 'package:flutter/material.dart';
-import '../../../controller/widgets/text.dart';
+
+import '../../../../Dada_controller/add_to_cart/controller.dart';
+import '../../../../Dada_controller/widgets/text.dart';
+import '../../Details_products/UI.dart';
+
 
 class Product_Card_widget extends StatefulWidget {
   const Product_Card_widget({super.key, this.AllData});
