@@ -1,7 +1,9 @@
 import 'dart:developer';
+import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
 import 'package:studio_projects/Dada_controller/widgets/text.dart';
+import 'package:studio_projects/controller/Test/authController.dart';
 import 'package:studio_projects/view/Dada_screen/auth/reg/RegSc.dart';
 
 import '../../../Dada_controller/widgets/tabbar.dart';
@@ -15,7 +17,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  int selected = 2;
+  final authController ac = Get.put(authController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,28 +54,24 @@ class _AuthScreenState extends State<AuthScreen> {
                 children: [
                   TabbarWidget(
                     index: 2,
-                    selected: selected,
+                    selected: ac.selected.value,
                     title: 'Sign up',
                     onTap: () {
-                      setState(() {
-                        selected = 2;
-                      });
+                      ac.selected.value = 2;
                     },
                   ),
 
                   TabbarWidget(
                     index: 1,
-                    selected: selected,
+                    selected: ac.selected.value,
                     title: 'Sign in',
                     onTap: () {
-                      setState(() {
-                        selected = 1;
-                      });
+                      ac.selected.value = 1;
                     },
                   ),
                 ],
               ),
-              selected == 1 ? LoginPage() : RegPage(),
+              ac.selected.value == 1 ? LoginPage() : RegPage(),
             ],
           ),
         ),
