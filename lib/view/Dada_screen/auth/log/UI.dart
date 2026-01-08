@@ -97,25 +97,7 @@ class LoginPage extends StatelessWidget {
                     )
                   : CustomButton_widget(
                       title: "Login",
-                      onTap: () async {
-                        lc.isLoading = true;
-
-                        var status = await LoginController.login(
-                          phone: lc.phoneNumberController.text,
-                          password: lc.PasswordController.text,
-                        );
-
-                        lc.isLoading = false;
-
-                        if (status == true) {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => home(),
-                            ), //Navigate to homepage
-                          );
-                        }
-                      },
+                      onTap: lc.loginFunction,
                     ),
             ],
           ),
