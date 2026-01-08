@@ -1,5 +1,6 @@
-import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/text.dart';
 
 class CustomButton_widget extends StatelessWidget {
   const CustomButton_widget({
