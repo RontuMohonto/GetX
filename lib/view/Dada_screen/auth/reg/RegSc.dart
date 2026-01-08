@@ -2,12 +2,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-import '../../../controller/auth/regController.dart';
-import '../../../controller/widgets/SignUpName_Widget.dart';
-import '../../../controller/widgets/SignUpNumber_widget.dart';
-import '../../../controller/widgets/SignUpPassword_widget.dart';
-import '../../../controller/widgets/custom_button.dart';
-import '../../../controller/widgets/text.dart';
+import '../../../../Dada_controller/auth/regController.dart';
+import '../../../../Dada_controller/widgets/SignUpName_Widget.dart';
+import '../../../../Dada_controller/widgets/SignUpNumber_widget.dart';
+import '../../../../Dada_controller/widgets/SignUpPassword_widget.dart';
+import '../../../../Dada_controller/widgets/custom_button.dart';
+import '../../../../Dada_controller/widgets/text.dart';
 
 class RegPage extends StatefulWidget {
   const RegPage({super.key});
