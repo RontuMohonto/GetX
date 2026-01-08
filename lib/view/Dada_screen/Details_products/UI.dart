@@ -1,10 +1,11 @@
 import 'dart:developer';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dada_garments_full_with_api/controller/details_controller/Details_controller_API.dart';
-import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
+
 import 'package:flutter/material.dart';
 
-import '../../controller/widgets/custom_button.dart';
+import '../../../Dada_controller/details_controller/Details_controller_API.dart';
+import '../../../Dada_controller/widgets/custom_button.dart';
+import '../../../Dada_controller/widgets/text.dart';
 import '../checkout/UI.dart';
 
 class Details extends StatefulWidget {
