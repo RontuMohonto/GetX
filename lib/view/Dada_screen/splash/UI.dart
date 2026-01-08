@@ -13,27 +13,12 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   //Splash Function
-  TimerFunction() async {
-    FlutterSecureStorage _storage = FlutterSecureStorage();
-    var t = await _storage.read(key: "token");
-
-    log("==========TT : $t======");
-    if (t == null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => AuthScreen()),
-      );
-    } else {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
-    }
-  }
 
   // @override
   // void initState() {
   //   TimerFunction();
   //   super.initState();
   // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
