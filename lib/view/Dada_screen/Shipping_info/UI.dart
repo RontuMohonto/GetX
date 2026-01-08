@@ -26,7 +26,6 @@ class _LoginState extends State<ShippingScreen> {
   bool isLoading = false;
 
   Map userData = {};
-
   getUserData() async {
     FlutterSecureStorage storage = FlutterSecureStorage();
     var d = await storage.read(key: "shipping");

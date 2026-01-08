@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -16,8 +15,9 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  //Splash Function
   TimerFunction() async {
-     FlutterSecureStorage _storage = FlutterSecureStorage();
+    FlutterSecureStorage _storage = FlutterSecureStorage();
     var t = await _storage.read(key: "token");
 
     log("==========TT : $t======");
@@ -26,11 +26,8 @@ class _SplashState extends State<Splash> {
         context,
         MaterialPageRoute(builder: (context) => AuthScreen()),
       );
-    }else {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => home()),
-      );
+    } else {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
     }
   }
 
