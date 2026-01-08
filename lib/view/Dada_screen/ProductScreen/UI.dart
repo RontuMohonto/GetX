@@ -1,10 +1,9 @@
 import 'dart:developer';
 
-import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
-import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
 import 'package:flutter/material.dart';
 
-import '../../controller/products/product_API.dart';
+import '../../../Dada_controller/products/product_API.dart';
+import '../../../Dada_controller/widgets/text.dart';
 import '../checkout/UI.dart';
 import 'Widgets/Product_Card_widget.dart';
 
