@@ -57,301 +57,301 @@ class home extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.white,
-      body: hg.isLoading == true
+      body: Obx(()=>hg.isLoading == true
           ? Center(child: CircularProgressIndicator())
           : ListView(
-              children: [
-                CarouselSlider(
-                  options: CarouselOptions(
-                    viewportFraction: .9,
-                    height: 170,
-                    autoPlay: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    enlargeCenterPage: true,
-                    enlargeFactor: 0.25,
-                  ),
-                  items: hg.Sliderlist.map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Container(
-                          margin: EdgeInsets.symmetric(
-                            horizontal: 6,
-                            vertical: 10,
+        children: [
+          CarouselSlider(
+            options: CarouselOptions(
+              viewportFraction: .9,
+              height: 170,
+              autoPlay: true,
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              enlargeCenterPage: true,
+              enlargeFactor: 0.25,
+            ),
+            items: hg.Sliderlist.map((i) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                    margin: EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.green.withOpacity(0.25),
+                          blurRadius: 12,
+                          spreadRadius: 2,
+                          offset: Offset(0, 6),
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(18),
+                      child: Stack(
+                        children: [
+                          //image add korsi ekhane
+                          Image.network(
+                            "https://eplay.coderangon.com/storage/${i['image']}",
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.cover,
                           ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.green.withOpacity(0.25),
-                                blurRadius: 12,
-                                spreadRadius: 2,
-                                offset: Offset(0, 6),
+
+                          //new black color
+                          Positioned.fill(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.black.withOpacity(0.0),
+                                    Colors.black.withOpacity(0.25),
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
                               ),
-                            ],
+                            ),
                           ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(18),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            }).toList(),
+          ),
+          //categories
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(text: "Category", color: Colors.black),
+                SizedBox(height: 15),
+                SizedBox(
+                  height: 120,
+                  // width: MediaQuery.sizeOf(context).width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: hg.Categorylist.length,
+                    itemBuilder: (context, i) => Container(
+                      margin: EdgeInsets.only(right: 12),
+                      child: Column(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              log(
+                                "====${hg.Categorylist[i]['id']}=======",
+                              );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProductScreen(
+                                    title: "${hg.Categorylist[i]['id']}",
+                                  ),
+                                ),
+                              );
+                            },
                             child: Stack(
                               children: [
-                                //image add korsi ekhane
-                                Image.network(
-                                  "https://eplay.coderangon.com/storage/${i['image']}",
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  fit: BoxFit.cover,
+                                //picture disi
+                                Container(
+                                  height: 105,
+                                  width: 95,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                      14,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.green.withOpacity(
+                                          0.25,
+                                        ),
+                                        blurRadius: 10,
+                                        spreadRadius: 2,
+                                        offset: Offset(0, 5),
+                                      ),
+                                    ],
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                      14,
+                                    ),
+                                    child: Image.network(
+                                      "https://eplay.coderangon.com/storage/${hg.Categorylist[i]['image']}",
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
 
-                                //new black color
-                                Positioned.fill(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Colors.black.withOpacity(0.0),
-                                          Colors.black.withOpacity(0.25),
+                                //name disi category er
+                                Positioned(
+                                  bottom: 6,
+                                  left: 0,
+                                  right: 0,
+                                  child: Center(
+                                    child: Text(
+                                      "${hg.Categorylist[i]['name']}",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w600,
+                                        shadows: [
+                                          Shadow(
+                                            blurRadius: 6,
+                                            color: Colors.black
+                                                .withOpacity(0.6),
+                                          ),
                                         ],
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
                                       ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        );
-                      },
-                    );
-                  }).toList(),
-                ),
-                //categories
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(text: "Category", color: Colors.black),
-                      SizedBox(height: 15),
-                      SizedBox(
-                        height: 120,
-                        // width: MediaQuery.sizeOf(context).width,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: hg.Categorylist.length,
-                          itemBuilder: (context, i) => Container(
-                            margin: EdgeInsets.only(right: 12),
-                            child: Column(
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    log(
-                                      "====${hg.Categorylist[i]['id']}=======",
-                                    );
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => ProductScreen(
-                                          title: "${hg.Categorylist[i]['id']}",
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: Stack(
-                                    children: [
-                                      //picture disi
-                                      Container(
-                                        height: 105,
-                                        width: 95,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            14,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.green.withOpacity(
-                                                0.25,
-                                              ),
-                                              blurRadius: 10,
-                                              spreadRadius: 2,
-                                              offset: Offset(0, 5),
-                                            ),
-                                          ],
-                                        ),
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                            14,
-                                          ),
-                                          child: Image.network(
-                                            "https://eplay.coderangon.com/storage/${hg.Categorylist[i]['image']}",
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-
-                                      //name disi category er
-                                      Positioned(
-                                        bottom: 6,
-                                        left: 0,
-                                        right: 0,
-                                        child: Center(
-                                          child: Text(
-                                            "${hg.Categorylist[i]['name']}",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w600,
-                                              shadows: [
-                                                Shadow(
-                                                  blurRadius: 6,
-                                                  color: Colors.black
-                                                      .withOpacity(0.6),
-                                                ),
-                                              ],
-                                            ),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      //Hot selling
-                      SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomText(text: "Hot selling", color: Colors.black),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ProductScreen(title: "hot-selling"),
-                                ),
-                              );
-                            },
-                            child: CustomText(
-                              text: "See All",
-                              color: Colors.black,
-                            ),
-                          ),
                         ],
                       ),
-                      SizedBox(
-                        height: 310,
-
-                        width: MediaQuery.sizeOf(context).width,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: hg.SellingList['hot-selling'].length,
-                          itemBuilder: (context, i) => SizedBox(
-                            width: 200,
-                            child: Product_Card_widget(
-                              AllData: hg.SellingList['hot-selling'][i],
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-
-                      //Top selling
-                      SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomText(text: "Top selling", color: Colors.black),
-                          InkWell(
-                            onTap: () {
-                              log("=====Top selling====");
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ProductScreen(title: "top-selling"),
-                                ),
-                              );
-                            },
-                            child: CustomText(
-                              text: "See All",
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 310,
-
-                        width: MediaQuery.sizeOf(context).width,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: hg.SellingList['top-selling'].length,
-                          itemBuilder: (context, i) => SizedBox(
-                            width: 200,
-                            child: Product_Card_widget(
-                              AllData: hg.SellingList['top-selling'][i],
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-
-                      //New Product
-                      SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                        children: [
-                          CustomText(text: "New Product", color: Colors.black),
-                          InkWell(
-                            onTap: () {
-                              log("====Latest products==========");
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ProductScreen(title: "latest"),
-                                ),
-                              );
-                            },
-                            child: CustomText(
-                              text: "See All",
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 310,
-
-                        width: MediaQuery.sizeOf(context).width,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: hg.SellingList['new-product'].length,
-                          itemBuilder: (context, i) => SizedBox(
-                            width: 200,
-                            child: Product_Card_widget(
-                              AllData: hg.SellingList['new-product'][i],
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                    ],
+                    ),
                   ),
                 ),
+                //Hot selling
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(text: "Hot selling", color: Colors.black),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ProductScreen(title: "hot-selling"),
+                          ),
+                        );
+                      },
+                      child: CustomText(
+                        text: "See All",
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 310,
+
+                  width: MediaQuery.sizeOf(context).width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: hg.SellingList['hot-selling'].length,
+                    itemBuilder: (context, i) => SizedBox(
+                      width: 200,
+                      child: Product_Card_widget(
+                        AllData: hg.SellingList['hot-selling'][i],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
+
+                //Top selling
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(text: "Top selling", color: Colors.black),
+                    InkWell(
+                      onTap: () {
+                        log("=====Top selling====");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ProductScreen(title: "top-selling"),
+                          ),
+                        );
+                      },
+                      child: CustomText(
+                        text: "See All",
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 310,
+
+                  width: MediaQuery.sizeOf(context).width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: hg.SellingList['top-selling'].length,
+                    itemBuilder: (context, i) => SizedBox(
+                      width: 200,
+                      child: Product_Card_widget(
+                        AllData: hg.SellingList['top-selling'][i],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
+
+                //New Product
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  children: [
+                    CustomText(text: "New Product", color: Colors.black),
+                    InkWell(
+                      onTap: () {
+                        log("====Latest products==========");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ProductScreen(title: "latest"),
+                          ),
+                        );
+                      },
+                      child: CustomText(
+                        text: "See All",
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 310,
+
+                  width: MediaQuery.sizeOf(context).width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: hg.SellingList['new-product'].length,
+                    itemBuilder: (context, i) => SizedBox(
+                      width: 200,
+                      child: Product_Card_widget(
+                        AllData: hg.SellingList['new-product'][i],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
               ],
             ),
+          ),
+        ],
+      ),),
 
 
 
-      //float button
+      //float button without  Obx
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (_) => Cart()));

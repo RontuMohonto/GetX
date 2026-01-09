@@ -5,34 +5,43 @@ import 'Selling_items/selling_items.dart';
 import 'category/categoryController.dart';
 
 class HomeGetX extends GetxController {
-  //empty list to add fetchdata
-  List Sliderlist = [];
-  List Categorylist = [];
-  Map SellingList = {};
-  bool isLoading = true;
+  // SAME variable names (as your UI)
+  RxList Sliderlist = [].obs;
+  RxList Categorylist = [].obs;
+  RxMap SellingList = {}.obs;
+  RxBool isLoading = true.obs;
 
-  sliderfetchData() async {
-    Sliderlist = await SliderController().getSliderData();
+  Future<void> sliderfetchData() async {
+    Sliderlist.value = await SliderController().getSliderData();
   }
 
-  categoryfetchData() async {
-    Categorylist = await CategoryController().getCategoryData();
+  Future<void> categoryfetchData() async {
+    Categorylist.value = await CategoryController().getCategoryData();
   }
 
-  SellingItemsfetchData() async {
-    SellingList = await SellingItemsController().getSellingsItemsData();
+  Future<void> SellingItemsfetchData() async {
+    SellingList.value = await SellingItemsController().getSellingsItemsData();
   }
 
-  getData() async {
-    await sliderfetchData();
-    await categoryfetchData();
-    await SellingItemsfetchData();
+  Future<void> getData() async {
+    try {
+      isLoading.value = true;
+
+      await Future.wait([
+        sliderfetchData(),
+        categoryfetchData(),
+        SellingItemsfetchData(),
+      ]);
+    } catch (e) {
+      print("Error: $e");
+    } finally {
+      isLoading.value = false;
+    }
   }
 
-  //auto call
   @override
   void onReady() {
-    getData();
     super.onReady();
+    getData();
   }
 }
