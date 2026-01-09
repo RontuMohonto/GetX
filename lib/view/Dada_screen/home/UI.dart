@@ -349,6 +349,9 @@ class home extends StatelessWidget {
               ],
             ),
 
+
+
+      //float button
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (_) => Cart()));
