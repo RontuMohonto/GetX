@@ -21,14 +21,8 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  // List<String> imgList = [
-  //   "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
-  //   "https://img.freepik.com/free-psd/horizontal-banner-online-fashion-sale_23-2148585404.jpg?semt=ais_hybrid&w=740&q=80",
-  //   "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
-  // ];
 
   bool isLoading = false;
-
   //empty list to add fetchdata
   List Sliderlist = [];
   List Categorylist = [];
@@ -51,11 +45,14 @@ class _homeState extends State<home> {
     setState(() {});
   }
 
+
+
+
+  //auto call
   @override
   void initState() {
     isLoading = true;
     sliderfetchData();
-
     super.initState();
   }
 
