@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:studio_projects/Dada_controller/RegGetX.dart';
 
 import '../../../../Dada_controller/auth/regController.dart';
 import '../../../../Dada_controller/widgets/SignUpName_Widget.dart';
@@ -8,6 +9,7 @@ import '../../../../Dada_controller/widgets/SignUpNumber_widget.dart';
 import '../../../../Dada_controller/widgets/SignUpPassword_widget.dart';
 import '../../../../Dada_controller/widgets/custom_button.dart';
 import '../../../../Dada_controller/widgets/text.dart';
+import 'package:get/get.dart';
 
 class RegPage extends StatefulWidget {
   const RegPage({super.key});
@@ -17,12 +19,7 @@ class RegPage extends StatefulWidget {
 }
 
 class _RegPageState extends State<RegPage> {
-  final _formKey = GlobalKey<FormState>();
-
-  final TextEditingController nameC = TextEditingController();
-  final TextEditingController numberC = TextEditingController();
-  final TextEditingController passC = TextEditingController();
-  bool isLoading = false;
+  final RegGetxController rgc = Get.put(RegGetxController());
 
   @override
   Widget build(BuildContext context) {
