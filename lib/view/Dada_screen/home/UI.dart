@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:flutter/material.dart';
+import 'package:studio_projects/Dada_controller/homeGetx.dart';
 
 import '../../../Dada_controller/Selling_items/selling_items.dart';
 import '../../../Dada_controller/category/categoryController.dart';
@@ -12,6 +13,7 @@ import '../Cart/UI.dart';
 import '../Order/UI.dart';
 import '../ProductScreen/UI.dart';
 import '../ProductScreen/Widgets/Product_Card_widget.dart';
+import 'package:get/get.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -21,40 +23,7 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-
-  bool isLoading = false;
-  //empty list to add fetchdata
-  List Sliderlist = [];
-  List Categorylist = [];
-  Map SellingList = {};
-
-  sliderfetchData() async {
-    isLoading = true;
-    Sliderlist = await SliderController().getSliderData();
-    categoryfetchData();
-  }
-
-  categoryfetchData() async {
-    Categorylist = await CategoryController().getCategoryData();
-    SellingItemsfetchData();
-  }
-
-  SellingItemsfetchData() async {
-    SellingList = await SellingItemsController().getSellingsItemsData();
-    isLoading = false;
-    setState(() {});
-  }
-
-
-
-
-  //auto call
-  @override
-  void initState() {
-    isLoading = true;
-    sliderfetchData();
-    super.initState();
-  }
+  final HomeGetX hg = Get.put(HomeGetX());
 
   @override
   Widget build(BuildContext context) {
