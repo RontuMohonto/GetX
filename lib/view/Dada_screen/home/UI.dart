@@ -15,14 +15,9 @@ import '../ProductScreen/UI.dart';
 import '../ProductScreen/Widgets/Product_Card_widget.dart';
 import 'package:get/get.dart';
 
-class home extends StatefulWidget {
-  const home({super.key});
+class home extends StatelessWidget {
+  home({super.key});
 
-  @override
-  State<home> createState() => _homeState();
-}
-
-class _homeState extends State<home> {
   final HomeGetX hg = Get.put(HomeGetX());
 
   @override
@@ -62,7 +57,7 @@ class _homeState extends State<home> {
         ],
       ),
       backgroundColor: Colors.white,
-      body: isLoading == true
+      body: hg.isLoading == true
           ? Center(child: CircularProgressIndicator())
           : ListView(
               children: [
@@ -75,7 +70,7 @@ class _homeState extends State<home> {
                     enlargeCenterPage: true,
                     enlargeFactor: 0.25,
                   ),
-                  items: Sliderlist.map((i) {
+                  items: hg.Sliderlist.map((i) {
                     return Builder(
                       builder: (BuildContext context) {
                         return Container(
@@ -142,19 +137,21 @@ class _homeState extends State<home> {
                         // width: MediaQuery.sizeOf(context).width,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: Categorylist.length,
+                          itemCount: hg.Categorylist.length,
                           itemBuilder: (context, i) => Container(
                             margin: EdgeInsets.only(right: 12),
                             child: Column(
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    log("====${Categorylist[i]['id']}=======");
+                                    log(
+                                      "====${hg.Categorylist[i]['id']}=======",
+                                    );
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => ProductScreen(
-                                          title: "${Categorylist[i]['id']}",
+                                          title: "${hg.Categorylist[i]['id']}",
                                         ),
                                       ),
                                     );
@@ -185,7 +182,7 @@ class _homeState extends State<home> {
                                             14,
                                           ),
                                           child: Image.network(
-                                            "https://eplay.coderangon.com/storage/${Categorylist[i]['image']}",
+                                            "https://eplay.coderangon.com/storage/${hg.Categorylist[i]['image']}",
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -198,7 +195,7 @@ class _homeState extends State<home> {
                                         right: 0,
                                         child: Center(
                                           child: Text(
-                                            "${Categorylist[i]['name']}",
+                                            "${hg.Categorylist[i]['name']}",
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 13,
@@ -253,11 +250,11 @@ class _homeState extends State<home> {
                         width: MediaQuery.sizeOf(context).width,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: SellingList['hot-selling'].length,
+                          itemCount: hg.SellingList['hot-selling'].length,
                           itemBuilder: (context, i) => SizedBox(
                             width: 200,
                             child: Product_Card_widget(
-                              AllData: SellingList['hot-selling'][i],
+                              AllData: hg.SellingList['hot-selling'][i],
                             ),
                           ),
                         ),
@@ -294,11 +291,11 @@ class _homeState extends State<home> {
                         width: MediaQuery.sizeOf(context).width,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: SellingList['top-selling'].length,
+                          itemCount: hg.SellingList['top-selling'].length,
                           itemBuilder: (context, i) => SizedBox(
                             width: 200,
                             child: Product_Card_widget(
-                              AllData: SellingList['top-selling'][i],
+                              AllData: hg.SellingList['top-selling'][i],
                             ),
                           ),
                         ),
@@ -336,11 +333,11 @@ class _homeState extends State<home> {
                         width: MediaQuery.sizeOf(context).width,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: SellingList['new-product'].length,
+                          itemCount: hg.SellingList['new-product'].length,
                           itemBuilder: (context, i) => SizedBox(
                             width: 200,
                             child: Product_Card_widget(
-                              AllData: SellingList['new-product'][i],
+                              AllData: hg.SellingList['new-product'][i],
                             ),
                           ),
                         ),
