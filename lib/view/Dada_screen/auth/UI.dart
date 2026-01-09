@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:studio_projects/Dada_controller/widgets/text.dart';
 import 'package:studio_projects/controller/Test/authController.dart';
-import 'package:studio_projects/view/Dada_screen/auth/reg/RegSc.dart';
+import 'package:studio_projects/view/Dada_screen/auth/reg/UI.dart';
 
 import '../../../Dada_controller/widgets/tabbar.dart';
 import 'log/UI.dart';
